@@ -1,0 +1,2069 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Buffet Bhai — Ghar Pe Dawaat Ka Scene</title>
+<meta name="description" content="Delhi NCR's premium home buffet catering. 10–100 guests. Hot food, complete setup, zero stress. Book on WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=DM+Sans:wght@300;400;500;600&family=Baloo+2:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+<style>
+:root {
+  --saffron: #E8681A;
+  --burgundy: #7C1D2E;
+  --gold: #F5C842;
+  --dark: #1A1208;
+  --dark2: #231810;
+  --cream: #FAF5EC;
+  --cream2: #F2EAD8;
+  --white: #FFFFFF;
+  --saffron-glow: rgba(232,104,26,0.3);
+  --burgundy-glow: rgba(124,29,46,0.4);
+  --gold-glow: rgba(245,200,66,0.25);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--dark);
+  color: var(--cream);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* ===== GRAIN TEXTURE ===== */
+.grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: overlay;
+}
+
+/* ===== NAVIGATION ===== */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 20px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.4s ease;
+}
+nav.scrolled {
+  background: rgba(26,18,8,0.92);
+  backdrop-filter: blur(20px);
+  padding: 14px 40px;
+  box-shadow: 0 4px 30px rgba(0,0,0,0.5);
+}
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--gold);
+  text-decoration: none;
+  letter-spacing: -0.5px;
+}
+.nav-logo span { color: var(--saffron); }
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+.nav-links a {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--cream);
+  text-decoration: none;
+  opacity: 0.8;
+  transition: opacity 0.2s, color 0.2s;
+}
+.nav-links a:hover { opacity: 1; color: var(--gold); }
+.nav-cta {
+  background: var(--saffron);
+  color: var(--dark) !important;
+  padding: 10px 22px;
+  border-radius: 50px;
+  font-weight: 700 !important;
+  opacity: 1 !important;
+  font-size: 13px !important;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s !important;
+  white-space: nowrap;
+  display: flex; align-items: center; gap: 6px;
+}
+.nav-cta:hover { transform: scale(1.04); box-shadow: 0 0 20px var(--saffron-glow); }
+
+.hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+.hamburger span { width: 26px; height: 2px; background: var(--cream); transition: all 0.3s; border-radius: 2px; }
+.mobile-menu {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(26,18,8,0.98);
+  z-index: 999;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+}
+.mobile-menu.active { display: flex; }
+.mobile-menu a {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  color: var(--cream);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.mobile-menu a:hover { color: var(--gold); }
+.mobile-menu .close-btn {
+  position: absolute;
+  top: 24px; right: 24px;
+  font-size: 32px;
+  cursor: pointer;
+  color: var(--cream);
+}
+
+/* ===== HERO ===== */
+#hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 24px 80px;
+  background: var(--dark);
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse 80% 60% at 50% 30%, rgba(124,29,46,0.5) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 40% at 80% 80%, rgba(232,104,26,0.2) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 40% at 20% 70%, rgba(245,200,66,0.08) 0%, transparent 60%);
+  z-index: 0;
+}
+.hero-grain {
+  position: absolute; inset: 0; z-index: 1;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.07'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+.hero-content { position: relative; z-index: 2; max-width: 900px; }
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(245,200,66,0.12);
+  border: 1px solid rgba(245,200,66,0.3);
+  color: var(--gold);
+  font-family: 'Baloo 2', cursive;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 16px;
+  border-radius: 50px;
+  margin-bottom: 28px;
+  letter-spacing: 0.5px;
+}
+.hero-badge::before { content: '🏆'; }
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(48px, 8vw, 92px);
+  font-weight: 900;
+  line-height: 1.05;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--saffron);
+  display: block;
+}
+.hero-sub {
+  font-size: clamp(15px, 2.5vw, 19px);
+  color: rgba(250,245,236,0.75);
+  max-width: 620px;
+  margin: 20px auto 36px;
+  line-height: 1.65;
+  font-weight: 400;
+}
+
+/* Social Proof Bar */
+.social-proof-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  flex-wrap: wrap;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  padding: 16px 24px;
+  margin-bottom: 40px;
+  backdrop-filter: blur(10px);
+}
+.proof-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 24px;
+  border-right: 1px solid rgba(255,255,255,0.1);
+}
+.proof-item:last-child { border-right: none; }
+.proof-val {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--gold);
+}
+.proof-label {
+  font-size: 11px;
+  color: rgba(250,245,236,0.55);
+  font-weight: 500;
+  margin-top: 2px;
+  text-align: center;
+}
+
+.hero-ctas {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--saffron);
+  color: var(--dark);
+  font-family: 'Baloo 2', cursive;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 14px 32px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+  animation: pulse-glow 2.5s infinite;
+}
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 var(--saffron-glow); }
+  50% { box-shadow: 0 0 30px 8px var(--saffron-glow); }
+}
+.btn-primary:hover { transform: scale(1.05); }
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 2px solid var(--saffron);
+  color: var(--saffron);
+  font-family: 'Baloo 2', cursive;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 14px 32px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.btn-secondary:hover { background: var(--saffron); color: var(--dark); }
+
+/* Decorative spice motifs */
+.spice-motif {
+  position: absolute;
+  opacity: 0.06;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ===== DIAGONAL DIVIDER ===== */
+.diagonal-down {
+  position: relative;
+  margin-bottom: -2px;
+}
+.diagonal-down::after {
+  content: '';
+  position: absolute;
+  bottom: -40px;
+  left: 0; right: 0;
+  height: 80px;
+  background: inherit;
+  clip-path: polygon(0 0, 100% 0, 100% 0, 0 100%);
+  z-index: 3;
+}
+
+/* ===== SECTIONS COMMON ===== */
+section { position: relative; }
+.section-inner { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+.section-dark { background: var(--dark); }
+.section-cream { background: var(--cream); color: var(--dark); }
+.section-burgundy { background: var(--burgundy); }
+
+.section-tag {
+  font-family: 'Baloo 2', cursive;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--saffron);
+  margin-bottom: 12px;
+  display: block;
+}
+.section-tag.gold { color: var(--gold); }
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 5vw, 54px);
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+.section-title em { font-style: italic; color: var(--saffron); }
+.section-title.dark-text { color: var(--dark); }
+.section-title.dark-text em { color: var(--burgundy); }
+
+/* ===== PROBLEM SECTION ===== */
+#problem {
+  background: var(--cream);
+  padding: 100px 0 80px;
+  clip-path: polygon(0 40px, 100% 0, 100% 100%, 0 100%);
+  margin-top: -40px;
+  color: var(--dark);
+}
+.problem-header { text-align: center; margin-bottom: 60px; }
+.problem-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-bottom: 60px;
+}
+.problem-card {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 36px 28px;
+  box-shadow: 0 8px 40px rgba(124,29,46,0.1);
+  border: 1px solid rgba(124,29,46,0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.problem-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--saffron), var(--gold));
+}
+.problem-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 50px rgba(232,104,26,0.15);
+}
+.problem-icon { font-size: 40px; margin-bottom: 16px; }
+.problem-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 10px;
+}
+.problem-card p { color: #5a4535; font-size: 15px; line-height: 1.7; }
+.problem-transition {
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(18px, 3vw, 26px);
+  font-style: italic;
+  color: var(--burgundy);
+  padding: 20px;
+  border-top: 1px solid rgba(124,29,46,0.15);
+}
+
+/* ===== SOLUTION SECTION ===== */
+#solution {
+  background: var(--dark);
+  padding: 100px 0 80px;
+  clip-path: polygon(0 0, 100% 40px, 100% 100%, 0 100%);
+  margin-top: -40px;
+}
+.solution-header { text-align: center; margin-bottom: 60px; }
+.pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+.pillar {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(232,104,26,0.2);
+  border-radius: 24px;
+  padding: 44px 32px;
+  text-align: center;
+  transition: all 0.35s;
+  position: relative;
+  overflow: hidden;
+}
+.pillar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(232,104,26,0.08) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.35s;
+}
+.pillar:hover::before { opacity: 1; }
+.pillar:hover {
+  border-color: var(--saffron);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(232,104,26,0.2);
+}
+.pillar-icon { font-size: 48px; margin-bottom: 20px; }
+.pillar h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+.pillar p { color: rgba(250,245,236,0.7); font-size: 15px; line-height: 1.7; }
+
+/* ===== PACKAGES ===== */
+#packages {
+  background: var(--cream);
+  padding: 100px 0 80px;
+  clip-path: polygon(0 40px, 100% 0, 100% 100%, 0 100%);
+  margin-top: -40px;
+  color: var(--dark);
+}
+.packages-header { text-align: center; margin-bottom: 50px; }
+.packages-subtext { color: #5a4535; font-size: 16px; max-width: 560px; margin: 0 auto; }
+
+.tab-nav {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 48px;
+  flex-wrap: wrap;
+}
+.tab-btn {
+  font-family: 'Baloo 2', cursive;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 10px 26px;
+  border-radius: 50px;
+  border: 2px solid rgba(124,29,46,0.25);
+  background: transparent;
+  color: #5a4535;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+.tab-btn.active {
+  background: var(--burgundy);
+  border-color: var(--burgundy);
+  color: var(--white);
+}
+.tab-btn:hover:not(.active) { border-color: var(--saffron); color: var(--saffron); }
+
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+.packages-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+}
+.pkg-card {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 32px 28px;
+  border: 2px solid transparent;
+  box-shadow: 0 4px 24px rgba(26,18,8,0.08);
+  transition: all 0.35s;
+  position: relative;
+  overflow: hidden;
+}
+.pkg-card.featured {
+  border-color: var(--saffron);
+  box-shadow: 0 8px 40px rgba(232,104,26,0.2);
+}
+.pkg-card:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 20px 60px rgba(232,104,26,0.2);
+  border-color: var(--saffron);
+}
+.pkg-badge {
+  position: absolute;
+  top: 20px; right: 20px;
+  font-family: 'Baloo 2', cursive;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 50px;
+  background: var(--gold);
+  color: var(--dark);
+  letter-spacing: 0.5px;
+}
+.pkg-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 4px;
+}
+.pkg-price {
+  font-family: 'Playfair Display', serif;
+  font-size: 34px;
+  font-weight: 900;
+  color: var(--saffron);
+  margin-bottom: 2px;
+}
+.pkg-price span { font-size: 15px; color: #888; font-family: 'DM Sans', sans-serif; font-weight: 400; }
+.pkg-guests {
+  font-family: 'Baloo 2', cursive;
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(26,18,8,0.08);
+}
+.pkg-dishes { list-style: none; margin-bottom: 24px; }
+.pkg-dishes li {
+  font-size: 14px;
+  color: #5a4535;
+  padding: 5px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.pkg-dishes li::before { content: '✦'; color: var(--gold); font-size: 10px; flex-shrink: 0; }
+.pkg-actions { display: flex; gap: 10px; }
+.btn-pkg-primary {
+  flex: 1;
+  text-align: center;
+  background: var(--saffron);
+  color: var(--dark);
+  font-family: 'Baloo 2', cursive;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 12px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.btn-pkg-primary:hover { background: var(--dark); color: var(--saffron); }
+.btn-pkg-secondary {
+  flex: 1;
+  text-align: center;
+  border: 2px solid var(--burgundy);
+  color: var(--burgundy);
+  font-family: 'Baloo 2', cursive;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 12px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.btn-pkg-secondary:hover { background: var(--burgundy); color: var(--white); }
+
+/* ===== GALLERY ===== */
+#gallery {
+  background: var(--dark);
+  padding: 100px 0 80px;
+  clip-path: polygon(0 0, 100% 40px, 100% 100%, 0 100%);
+  margin-top: -40px;
+}
+.gallery-header { text-align: center; margin-bottom: 48px; }
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 200px);
+  gap: 16px;
+  margin-bottom: 40px;
+}
+.gallery-item {
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  background: var(--dark2);
+  border: 1px solid rgba(232,104,26,0.15);
+}
+.gallery-item:nth-child(1) { grid-row: span 2; }
+.gallery-item:nth-child(4) { grid-column: span 2; }
+.gallery-placeholder {
+  width: 100%; height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: linear-gradient(135deg, rgba(124,29,46,0.3), rgba(232,104,26,0.15));
+  color: rgba(250,245,236,0.4);
+  font-size: 13px;
+  text-align: center;
+  transition: all 0.3s;
+  padding: 16px;
+}
+.gallery-item:hover .gallery-placeholder {
+  background: linear-gradient(135deg, rgba(124,29,46,0.5), rgba(232,104,26,0.3));
+  color: var(--cream);
+}
+.gallery-placeholder .gp-icon { font-size: 32px; opacity: 0.5; }
+.gallery-cta { text-align: center; }
+
+/* ===== WHY US ===== */
+#why {
+  background: var(--cream);
+  padding: 100px 0 80px;
+  clip-path: polygon(0 40px, 100% 0, 100% 100%, 0 100%);
+  margin-top: -40px;
+  color: var(--dark);
+}
+.why-header { text-align: center; margin-bottom: 60px; }
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+.trust-card {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 36px 28px;
+  text-align: center;
+  border: 1px solid rgba(124,29,46,0.08);
+  box-shadow: 0 4px 20px rgba(26,18,8,0.06);
+  transition: all 0.3s;
+}
+.trust-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(232,104,26,0.15);
+  border-color: rgba(232,104,26,0.2);
+}
+.trust-icon { font-size: 40px; margin-bottom: 16px; }
+.trust-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 8px;
+}
+.trust-card p { color: #5a4535; font-size: 14px; line-height: 1.65; }
+
+/* ===== HOW IT WORKS ===== */
+#how {
+  background: var(--dark);
+  padding: 100px 0 80px;
+  clip-path: polygon(0 0, 100% 40px, 100% 100%, 0 100%);
+  margin-top: -40px;
+}
+.how-header { text-align: center; margin-bottom: 70px; }
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.steps::before {
+  content: '';
+  position: absolute;
+  top: 40px;
+  left: calc(16.66% + 24px);
+  right: calc(16.66% + 24px);
+  height: 2px;
+  background: linear-gradient(90deg, var(--saffron), var(--gold));
+  z-index: 0;
+}
+.step {
+  text-align: center;
+  padding: 0 24px;
+  position: relative;
+  z-index: 1;
+}
+.step-num {
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--saffron), var(--burgundy));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px;
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+  font-weight: 900;
+  color: var(--white);
+  box-shadow: 0 0 0 6px var(--dark), 0 0 0 8px rgba(232,104,26,0.3);
+}
+.step h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+.step p { color: rgba(250,245,236,0.7); font-size: 14px; line-height: 1.7; }
+
+/* ===== TESTIMONIALS ===== */
+#reviews {
+  background: var(--cream);
+  padding: 100px 0 80px;
+  clip-path: polygon(0 40px, 100% 0, 100% 100%, 0 100%);
+  margin-top: -40px;
+  color: var(--dark);
+}
+.reviews-header { text-align: center; margin-bottom: 50px; }
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 50px;
+}
+.testimonial-card {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 32px 28px;
+  border: 1px solid rgba(124,29,46,0.08);
+  box-shadow: 0 4px 24px rgba(26,18,8,0.07);
+  transition: all 0.3s;
+  position: relative;
+}
+.testimonial-card:nth-child(4),
+.testimonial-card:nth-child(5) {
+  grid-column: span 1;
+}
+.testimonials-grid .testimonial-card:nth-child(4) { grid-column: 1 / span 1; }
+.testimonials-grid .testimonial-card:nth-child(5) { grid-column: 2 / span 1; }
+.testimonial-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(232,104,26,0.12);
+}
+.test-quote {
+  font-size: 32px;
+  color: var(--saffron);
+  line-height: 1;
+  margin-bottom: 12px;
+  font-family: serif;
+}
+.test-text {
+  font-size: 14px;
+  color: #3a2a1c;
+  line-height: 1.75;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+.test-author {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--dark);
+}
+.test-location { color: #888; font-size: 12px; margin-top: 2px; }
+.stars { color: var(--gold); font-size: 13px; margin-bottom: 8px; }
+
+.google-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background: var(--dark);
+  color: var(--cream);
+  padding: 20px 36px;
+  border-radius: 16px;
+  max-width: 420px;
+  margin: 0 auto;
+}
+.google-badge .grating {
+  font-family: 'Playfair Display', serif;
+  font-size: 40px;
+  font-weight: 900;
+  color: var(--gold);
+}
+.google-badge .ginfo { text-align: left; }
+.google-badge .gstars { color: var(--gold); font-size: 18px; }
+.google-badge .gcount { font-size: 12px; color: rgba(250,245,236,0.6); margin-top: 2px; }
+
+/* ===== FAQ ===== */
+#faq {
+  background: var(--dark);
+  padding: 100px 0 80px;
+  clip-path: polygon(0 0, 100% 40px, 100% 100%, 0 100%);
+  margin-top: -40px;
+}
+.faq-header { text-align: center; margin-bottom: 60px; }
+.faq-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+.faq-item {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(232,104,26,0.15);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+.faq-item.open { border-color: var(--saffron); }
+.faq-q {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 24px;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--cream);
+  line-height: 1.4;
+}
+.faq-q .faq-arrow {
+  flex-shrink: 0;
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  background: rgba(232,104,26,0.15);
+  display: flex; align-items: center; justify-content: center;
+  transition: transform 0.3s, background 0.3s;
+  color: var(--saffron);
+  font-size: 16px;
+}
+.faq-item.open .faq-arrow {
+  transform: rotate(45deg);
+  background: var(--saffron);
+  color: var(--dark);
+}
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.3s;
+  color: rgba(250,245,236,0.65);
+  font-size: 14px;
+  line-height: 1.7;
+  padding: 0 24px;
+}
+.faq-item.open .faq-a {
+  max-height: 200px;
+  padding: 0 24px 20px;
+}
+
+/* ===== CTA SECTION ===== */
+#contact {
+  background: var(--cream);
+  padding: 100px 0 80px;
+  clip-path: polygon(0 40px, 100% 0, 100% 100%, 0 100%);
+  margin-top: -40px;
+  color: var(--dark);
+}
+.cta-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+.cta-left h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 900;
+  color: var(--dark);
+  margin-bottom: 16px;
+  line-height: 1.1;
+}
+.cta-left h2 em { color: var(--burgundy); font-style: italic; }
+.cta-left p {
+  color: #5a4535;
+  font-size: 16px;
+  line-height: 1.65;
+  margin-bottom: 32px;
+}
+.cta-buttons { display: flex; flex-direction: column; gap: 14px; }
+.btn-wa {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #25D366;
+  color: var(--white);
+  font-family: 'Baloo 2', cursive;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 16px 32px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.2s;
+  animation: pulse-glow-green 2.5s infinite;
+}
+@keyframes pulse-glow-green {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(37,211,102,0.3); }
+  50% { box-shadow: 0 0 30px 8px rgba(37,211,102,0.3); }
+}
+.btn-wa:hover { background: #1aa350; transform: scale(1.03); }
+.btn-call {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 2px solid var(--dark);
+  color: var(--dark);
+  font-family: 'Baloo 2', cursive;
+  font-size: 17px;
+  font-weight: 700;
+  padding: 14px 32px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.btn-call:hover { background: var(--dark); color: var(--cream); }
+
+.areas-served {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 28px;
+}
+.area-tag {
+  font-family: 'Baloo 2', cursive;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 14px;
+  border-radius: 50px;
+  background: rgba(124,29,46,0.1);
+  color: var(--burgundy);
+  border: 1px solid rgba(124,29,46,0.2);
+}
+
+/* FORM */
+.inquiry-form {
+  background: var(--white);
+  border-radius: 24px;
+  padding: 40px 36px;
+  box-shadow: 0 12px 50px rgba(124,29,46,0.12);
+  border: 1px solid rgba(124,29,46,0.1);
+}
+.inquiry-form h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 24px;
+}
+.form-field {
+  margin-bottom: 16px;
+}
+.form-field label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: #888;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid rgba(26,18,8,0.1);
+  border-radius: 12px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: var(--dark);
+  background: var(--cream);
+  outline: none;
+  transition: border-color 0.2s;
+}
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  border-color: var(--saffron);
+}
+.form-field textarea { resize: vertical; min-height: 80px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.submit-btn {
+  width: 100%;
+  background: var(--saffron);
+  color: var(--dark);
+  font-family: 'Baloo 2', cursive;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 14px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: all 0.2s;
+}
+.submit-btn:hover { background: var(--dark); color: var(--saffron); }
+.form-success {
+  display: none;
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--dark);
+}
+.form-success .check { font-size: 56px; margin-bottom: 12px; }
+.form-success h4 { font-family: 'Playfair Display', serif; font-size: 22px; margin-bottom: 8px; }
+.form-success p { color: #5a4535; font-size: 14px; }
+
+/* ===== FOOTER ===== */
+footer {
+  background: var(--dark2);
+  border-top: 1px solid rgba(232,104,26,0.15);
+  padding: 60px 0 32px;
+  color: rgba(250,245,236,0.6);
+}
+.footer-inner {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.footer-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 48px;
+}
+.footer-brand p { font-size: 14px; line-height: 1.7; margin-top: 12px; max-width: 280px; }
+.footer-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--gold);
+}
+.footer-logo span { color: var(--saffron); }
+.footer-tagline {
+  font-family: 'Baloo 2', cursive;
+  font-size: 12px;
+  color: rgba(250,245,236,0.4);
+  margin-top: 4px;
+}
+footer h4 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+footer ul { list-style: none; }
+footer ul li { margin-bottom: 8px; }
+footer ul a {
+  color: rgba(250,245,236,0.6);
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.2s;
+}
+footer ul a:hover { color: var(--saffron); }
+.footer-contact p { font-size: 14px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+.footer-contact a { color: rgba(250,245,236,0.7); text-decoration: none; transition: color 0.2s; }
+.footer-contact a:hover { color: var(--saffron); }
+.social-icons { display: flex; gap: 12px; margin-top: 8px; }
+.social-icon {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(250,245,236,0.6);
+  text-decoration: none;
+  font-size: 13px;
+  transition: all 0.2s;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.social-icon:hover { background: var(--saffron); color: var(--dark); border-color: var(--saffron); }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.footer-bottom a { color: rgba(250,245,236,0.5); text-decoration: none; }
+.footer-bottom a:hover { color: var(--saffron); }
+
+/* ===== FLOATING ELEMENTS ===== */
+.wa-fab {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 60px; height: 60px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+  z-index: 900;
+  text-decoration: none;
+  transition: transform 0.2s;
+  animation: wa-pulse 2s infinite;
+}
+@keyframes wa-pulse {
+  0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.4); }
+  50% { box-shadow: 0 4px 40px rgba(37,211,102,0.7); }
+}
+.wa-fab:hover { transform: scale(1.1); }
+.wa-fab svg { width: 30px; height: 30px; fill: white; }
+
+.mobile-sticky-bar {
+  display: none;
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  background: var(--dark);
+  border-top: 1px solid rgba(232,104,26,0.3);
+  padding: 12px 16px;
+  z-index: 890;
+  gap: 10px;
+}
+.mobile-sticky-bar a {
+  flex: 1;
+  text-align: center;
+  font-family: 'Baloo 2', cursive;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 12px;
+  border-radius: 50px;
+  text-decoration: none;
+}
+.mobile-sticky-bar .msb-wa { background: #25D366; color: var(--white); }
+.mobile-sticky-bar .msb-order { background: var(--saffron); color: var(--dark); }
+
+/* ===== SCROLL ANIMATIONS ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .trust-grid { grid-template-columns: repeat(2, 1fr); }
+  .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+  .testimonials-grid .testimonial-card:nth-child(5) { grid-column: span 2; }
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .cta-inner { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  nav { padding: 16px 20px; }
+  nav.scrolled { padding: 12px 20px; }
+  .nav-links { display: none; }
+  .nav-cta-desktop { display: none; }
+  .hamburger { display: flex; }
+  
+  .problem-cards { grid-template-columns: 1fr; }
+  .pillars { grid-template-columns: 1fr; }
+  .packages-grid { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+  .gallery-item:nth-child(1) { grid-row: span 1; }
+  .gallery-item:nth-child(4) { grid-column: span 1; }
+  .trust-grid { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: 1fr; gap: 40px; }
+  .steps::before { display: none; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .testimonials-grid .testimonial-card:nth-child(5) { grid-column: span 1; }
+  .faq-grid { grid-template-columns: 1fr; }
+  .footer-top { grid-template-columns: 1fr; gap: 32px; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  .wa-fab { bottom: 84px; }
+  .mobile-sticky-bar { display: flex; }
+  .form-row { grid-template-columns: 1fr; }
+  
+  .social-proof-bar { padding: 12px 8px; }
+  .proof-item { padding: 0 12px; }
+  .proof-val { font-size: 18px; }
+  .proof-label { font-size: 10px; }
+}
+
+@media (max-width: 480px) {
+  nav { padding: 14px 16px; }
+  .hero { padding: 100px 16px 60px; }
+  .gallery-grid { grid-template-columns: 1fr; height: auto; }
+  .gallery-item { height: 160px; }
+  .gallery-item:nth-child(1) { height: 200px; }
+  .gallery-item:nth-child(4) { grid-column: span 1; }
+  .section-inner { padding: 0 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">The Buffet <span>Bhai</span></a>
+  <ul class="nav-links">
+    <li><a href="#packages">Packages</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="https://wa.me/919643968546?text=Hi%20Buffet%20Bhai!%20I%20want%20to%20book%20catering." class="nav-cta nav-cta-desktop" target="_blank">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+    Bhai Ko Bulao
+  </a>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <span class="close-btn" id="closeMenu">✕</span>
+  <a href="#packages" onclick="closeMobileMenu()">Packages</a>
+  <a href="#how" onclick="closeMobileMenu()">How It Works</a>
+  <a href="#reviews" onclick="closeMobileMenu()">Reviews</a>
+  <a href="#faq" onclick="closeMobileMenu()">FAQ</a>
+  <a href="#contact" onclick="closeMobileMenu()">Contact</a>
+  <a href="https://wa.me/919643968546?text=Hi%20Buffet%20Bhai!%20I%20want%20to%20book%20catering." target="_blank" style="color: var(--gold);">Bhai Ko Bulao 🤙</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grain"></div>
+  
+  <!-- Decorative SVG circles -->
+  <svg class="spice-motif" style="top:10%;left:5%;width:200px;height:200px;" viewBox="0 0 200 200"><circle cx="100" cy="100" r="90" fill="none" stroke="#F5C842" stroke-width="1"/><circle cx="100" cy="100" r="70" fill="none" stroke="#F5C842" stroke-width="0.5"/><circle cx="100" cy="100" r="50" fill="none" stroke="#F5C842" stroke-width="1"/><line x1="100" y1="10" x2="100" y2="190" stroke="#F5C842" stroke-width="0.5"/><line x1="10" y1="100" x2="190" y2="100" stroke="#F5C842" stroke-width="0.5"/></svg>
+  <svg class="spice-motif" style="bottom:10%;right:5%;width:160px;height:160px;opacity:0.05;" viewBox="0 0 160 160"><polygon points="80,5 95,60 155,60 108,95 125,150 80,115 35,150 52,95 5,60 65,60" fill="none" stroke="#E8681A" stroke-width="1.5"/></svg>
+
+  <div class="hero-content">
+    <div class="hero-badge">Delhi NCR ka #1 House Party Caterer</div>
+    
+    <h1>
+      Ghar Pe Dawaat Ka Scene?
+      <em>Chhod Do Hamare Pe.</em>
+    </h1>
+    
+    <p class="hero-sub">Premium buffet catering for 10–100 guests. Hot food, complete setup, zero kitchen stress — delivered to your door.</p>
+    
+    <div class="social-proof-bar">
+      <div class="proof-item">
+        <div class="proof-val">⭐ 4.8</div>
+        <div class="proof-label">Rating</div>
+      </div>
+      <div class="proof-item">
+        <div class="proof-val">15,000+</div>
+        <div class="proof-label">Dawaatein Served</div>
+      </div>
+      <div class="proof-item">
+        <div class="proof-val">₹1,499/-</div>
+        <div class="proof-label">Per Person Starting</div>
+      </div>
+      <div class="proof-item">
+        <div class="proof-val">Same Day</div>
+        <div class="proof-label">Booking Available</div>
+      </div>
+    </div>
+    
+    <div class="hero-ctas">
+      <a href="https://wa.me/919643968546?text=Hi%20Buffet%20Bhai!%20I%20want%20to%20book%20catering." class="btn-primary" target="_blank">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"></path></svg>
+        Bhai Ko Bulao
+      </a>
+      <a href="#packages" class="btn-secondary">Packages Dekho ↓</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section id="problem">
+  <div class="section-inner">
+    <div class="problem-header reveal">
+      <span class="section-tag" style="color:var(--burgundy);">Yeh Toh Hota Hi Hai</span>
+      <h2 class="section-title dark-text">Jab Ghar Mein Party Ho, <em>Toh Tension Kyun?</em></h2>
+    </div>
+    
+    <div class="problem-cards">
+      <div class="problem-card reveal reveal-delay-1">
+        <div class="problem-icon">🥘</div>
+        <h3>Kitchen ka Mela</h3>
+        <p>30 log ke liye khana banana, wo bhi properly? Dal, chawal, sabzi, dessert — aur phir cleaning bhi? Nahi bhai, nahi.</p>
+      </div>
+      <div class="problem-card reveal reveal-delay-2">
+        <div class="problem-icon">⏰</div>
+        <h3>Time Toh Hai Hi Nahi</h3>
+        <p>Decoration, shopping, guests ka jugaad — aur upar se cooking? Ek hi haath mein itna sambhalna possible nahi.</p>
+      </div>
+      <div class="problem-card reveal reveal-delay-3">
+        <div class="problem-icon">😰</div>
+        <h3>Kya Sochenge Log?</h3>
+        <p>Mehman aaye aur khana dum wala na ho? Woh moment sabse important hai. Isme gamble mat karo.</p>
+      </div>
+    </div>
+    
+    <p class="problem-transition reveal">
+      <em>Isliye The Buffet Bhai hai. Aap host bano, baaki hum dekhte hain.</em>
+    </p>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section id="solution">
+  <div class="section-inner">
+    <div class="solution-header reveal">
+      <span class="section-tag">Hamara Waada</span>
+      <h2 class="section-title">Aapki Dawaat, <em>Hamari Zimmedari</em></h2>
+    </div>
+    <div class="pillars">
+      <div class="pillar reveal reveal-delay-1">
+        <div class="pillar-icon">🔥</div>
+        <h3>Hot & Fresh Delivery</h3>
+        <p>Restaurant-quality food, packed in heat-retaining containers, delivered right before your guests arrive.</p>
+      </div>
+      <div class="pillar reveal reveal-delay-2">
+        <div class="pillar-icon">🍽️</div>
+        <h3>Complete Buffet Setup</h3>
+        <p>Premium disposables, serving spoons, napkins, chafing dishes — everything. You literally just open the box.</p>
+      </div>
+      <div class="pillar reveal reveal-delay-3">
+        <div class="pillar-icon">📞</div>
+        <h3>Book in Minutes</h3>
+        <p>WhatsApp us your date, guest count, and menu preference. Confirm in under an hour. That's it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section id="packages">
+  <div class="section-inner">
+    <div class="packages-header reveal">
+      <span class="section-tag" style="color:var(--burgundy);">Menu</span>
+      <h2 class="section-title dark-text"><em>Apni Dawaat</em> Chuniye</h2>
+      <p class="packages-subtext">Every package is priced per person, fully customizable, and built for real Delhi appetites.</p>
+    </div>
+    
+    <div class="tab-nav reveal">
+      <button class="tab-btn active" onclick="switchTab('veg')">🌿 Pure Veg</button>
+      <button class="tab-btn" onclick="switchTab('nonveg')">🍗 Non-Veg</button>
+      <button class="tab-btn" onclick="switchTab('premium')">🎉 Premium Spreads</button>
+    </div>
+    
+    <!-- VEG -->
+    <div class="tab-content active" id="tab-veg">
+      <div class="packages-grid">
+        <div class="pkg-card reveal">
+          <div class="pkg-name">Seedha Saadha Dawaat</div>
+          <div class="pkg-price">₹1,499<span>/person</span></div>
+          <div class="pkg-guests">10–100 guests</div>
+          <ul class="pkg-dishes">
+            <li>Dal Makhani</li>
+            <li>Mix Veg</li>
+            <li>Shahi Paneer</li>
+            <li>Jeera Rice</li>
+            <li>Roti</li>
+            <li>Salad & Raita</li>
+          </ul>
+          <div class="pkg-actions">
+            <a href="https://wa.me/919643968546?text=Hi!%20I%20want%20to%20order%20the%20Seedha%20Saadha%20Dawaat%20package." class="btn-pkg-primary" target="_blank">Order Karo</a>
+            <a href="tel:+919643968546" class="btn-pkg-secondary">Call Karo</a>
+          </div>
+        </div>
+        
+        <div class="pkg-card featured reveal reveal-delay-1">
+          <div class="pkg-badge">Most Popular</div>
+          <div class="pkg-name">Dilli Wali Dawaat</div>
+          <div class="pkg-price">₹1,799<span>/person</span></div>
+          <div class="pkg-guests">10–100 guests</div>
+          <ul class="pkg-dishes">
+            <li>Dal Makhani</li>
+            <li>Shahi Paneer</li>
+            <li>Matar Mushroom</li>
+            <li>Malai Kofta</li>
+            <li>Jeera Rice, Roti</li>
+            <li>Phirni (Dessert)</li>
+          </ul>
+          <div class="pkg-actions">
+            <a href="https://wa.me/919643968546?text=Hi!%20I%20want%20to%20order%20the%20Dilli%20Wali%20Dawaat%20package." class="btn-pkg-primary" target="_blank">Order Karo</a>
+            <a href="tel:+919643968546" class="btn-pkg-secondary">Call Karo</a>
+          </div>
+        </div>
+        
+        <div class="pkg-card reveal reveal-delay-2">
+          <div class="pkg-badge" style="background:var(--burgundy);color:var(--white);">Staff Favorite</div>
+          <div class="pkg-name">Shahi Veg Spread</div>
+          <div class="pkg-price">₹2,299<span>/person</span></div>
+          <div class="pkg-guests">10–100 guests</div>
+          <ul class="pkg-dishes">
+            <li>Full 8-Course Veg Menu</li>
+            <li>Starters Included</li>
+            <li>2 Mains + Dal + Rice</li>
+            <li>Breads Assorted</li>
+            <li>Live Dessert Counter</li>
+            <li>Everything Premium</li>
+          </ul>
+          <div class="pkg-actions">
+            <a href="https://wa.me/919643968546?text=Hi!%20I%20want%20to%20order%20the%20Shahi%20Veg%20Spread%20package." class="btn-pkg-primary" target="_blank">Order Karo</a>
+            <a href="tel:+919643968546" class="btn-pkg-secondary">Call Karo</a>
+          </div>
+        </div>
+        
+        <div class="pkg-card reveal reveal-delay-1">
+          <div class="pkg-badge" style="background:var(--gold);color:var(--dark);">Best Value</div>
+          <div class="pkg-name">Starters Only Pack</div>
+          <div class="pkg-price">₹499<span>/person</span></div>
+          <div class="pkg-guests">10–100 guests</div>
+          <ul class="pkg-dishes">
+            <li>Paneer Tikka</li>
+            <li>Dahi Ke Sholay</li>
+            <li>Hara Bhara Kabab</li>
+            <li>Corn Tikki</li>
+          </ul>
+          <div class="pkg-actions">
+            <a href="https://wa.me/919643968546?text=Hi!%20I%20want%20to%20order%20the%20Starters%20Only%20Pack." class="btn-pkg-primary" target="_blank">Order Karo</a>
+            <a href="tel:+919643968546" class="btn-pkg-secondary">Call Karo</a>
+          </div>
+        </div>
+        
+        <div class="pkg-card reveal reveal-delay-2">
+          <div class="pkg-name">Breakfast Dawaat</div>
+          <div class="pkg-price">₹799<span>/person</span></div>
+          <div class="pkg-guests">10–100 guests</div>
+          <ul class="pkg-dishes">
+            <li>Puri Bhaji</li>
+            <li>Chole</li>
+            <li>Halwa</li>
+            <li>Lassi</li>
+            <li>Aloo Paratha</li>
+          </ul>
+          <div class="pkg-actions">
+            <a href="https://wa.me/919643968546?text=Hi!%20I%20want%20to%20order%20the%20Breakfast%20Dawaat%20package." class="btn-pkg-primary" target="_blank">Order Karo</a>
+            <a href="tel:+919643968546" class="btn-pkg-secondary">Call Karo</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- NON-VEG -->
+    <div class="tab-content" id="tab-nonveg">
+      <div class="packages-grid">
+        <div class="pkg-card reveal">
+          <div class="pkg-name">Non-Veg Essential</div>
+          <div class="pkg-price">₹1,999<span>/person</span></div>
+          <div class="pkg-guests">10–100 guests</div>
+          <ul class="pkg-dishes">
+            <li>Butter Chicken</li>
+            <li>Mutton Curry</li>
+            <li>Dal Fry</li>
+            <li>Biryani</li>
+            <li>Roti</li>
+            <li>Raita</li>
+          </ul>
+          <div class="pkg-actions">
+            <a href="https://wa.me/919643968546?text=Hi!%20I%20want%20the%20Non-Veg%20Essential%20package." class="btn-pkg-primary" target="_blank">Order Karo</a>
+            <a href="tel:+919643968546" class="btn-pkg-secondary">Call Karo</a>
+          </div>
+        </div>
+        
+        <div class="pkg-card featured reveal reveal-delay-1">
+          <div class="pkg-badge">Most Popular</div>
+          <div class="pkg-name">Mughlai Feast</div>
+          <div class="pkg-price">₹2,499<span>/person</span></div>
+          <div class="pkg-guests">10–100 guests</div>
+          <ul class="pkg-dishes">
+            <li>Butter Chicken</li>
+            <li>Seekh Kebab Starter</li>
+            <li>Fish Curry</li>
+            <li>Shahi Korma</li>
+            <li>Dum Biryani</li>
+            <li>Dal + Breads + Raita</li>
+          </ul>
+          <div class="pkg-actions">
+            <a href="https://wa.me/919643968546?text=Hi!%20I%20want%20the%20Mughlai%20Feast%20package." class="btn-pkg-primary" target="_blank">Order Karo</a>
+            <a href="tel:+919643968546" class="btn-pkg-secondary">Call Karo</a>
+          </div>
+        </div>
+        
+        <div class="pkg-card reveal reveal-delay-2">
+          <div class="pkg-badge" style="background:var(--burgundy);color:var(--white);">Luxury</div>
+          <div class="pkg-name">Royal Non-Veg Spread</div>
+          <div class="pkg-price">₹3,299<span>/person</span></div>
+          <div class="pkg-guests">10–100 guests</div>
+          <ul class="pkg-dishes">
+            <li>Full 9-Course Feast</li>
+            <li>Premium Cuts</li>
+            <li>Live Carving Station</li>
+            <li>Starters + Mains</li>
+            <li>Dessert Counter</li>
+            <li>Everything Included</li>
+          </ul>
+          <div class="pkg-actions">
+            <a href="https://wa.me/919643968546?text=Hi!%20I%20want%20the%20Royal%20Non-Veg%20Spread%20package." class="btn-pkg-primary" target="_blank">Order Karo</a>
+            <a href="tel:+919643968546" class="btn-pkg-secondary">Call Karo</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- PREMIUM -->
+    <div class="tab-content" id="tab-premium">
+      <div class="packages-grid">
+        <div class="pkg-card reveal">
+          <div class="pkg-badge" style="background:var(--gold);color:var(--dark);">Best Value</div>
+          <div class="pkg-name">Office Party Pack</div>
+          <div class="pkg-price">₹1,299<span>/person</span></div>
+          <div class="pkg-guests">10–100 guests</div>
+          <ul class="pkg-dishes">
+            <li>Finger Foods</li>
+            <li>Assorted Starters</li>
+            <li>Live Counter (Optional)</li>
+            <li>Soft Beverages</li>
+            <li>Desserts</li>
+          </ul>
+          <div class="pkg-actions">
+            <a href="https://wa.me/919643968546?text=Hi!%20I%20want%20the%20Office%20Party%20Pack." class="btn-pkg-primary" target="_blank">Order Karo</a>
+            <a href="tel:+919643968546" class="btn-pkg-secondary">Call Karo</a>
+          </div>
+        </div>
+        
+        <div class="pkg-card reveal reveal-delay-1">
+          <div class="pkg-name">Puja Prasad Thali</div>
+          <div class="pkg-price">₹999<span>/person</span></div>
+          <div class="pkg-guests">10–100 guests</div>
+          <ul class="pkg-dishes">
+            <li>Saatvik — No Onion/Garlic</li>
+            <li>Full Traditional Menu</li>
+            <li>Halwa, Kheer</li>
+            <li>Paneer + Dal</li>
+            <li>Puri / Roti</li>
+            <li>Sabzi + Rice</li>
+          </ul>
+          <div class="pkg-actions">
+            <a href="https://wa.me/919643968546?text=Hi!%20I%20want%20the%20Puja%20Prasad%20Thali%20package." class="btn-pkg-primary" target="_blank">Order Karo</a>
+            <a href="tel:+919643968546" class="btn-pkg-secondary">Call Karo</a>
+          </div>
+        </div>
+        
+        <div class="pkg-card reveal reveal-delay-2" style="border-color: var(--gold);">
+          <div class="pkg-badge" style="background:var(--burgundy);color:var(--white);">Custom</div>
+          <div class="pkg-name">Daawat-e-Khas</div>
+          <div class="pkg-price" style="font-size:24px;margin-top:8px;">Custom Quote</div>
+          <div class="pkg-guests">Minimum 50 guests</div>
+          <ul class="pkg-dishes">
+            <li>Wedding-style Home Setup</li>
+            <li>Full Custom Menu</li>
+            <li>Live Counters</li>
+            <li>Premium Décor Add-ons</li>
+            <li>Dedicated Event Manager</li>
+          </ul>
+          <div class="pkg-actions">
+            <a href="https://wa.me/919643968546?text=Hi!%20I%20want%20a%20custom%20quote%20for%20Daawat-e-Khas." class="btn-pkg-primary" target="_blank">Inquiry Karo</a>
+            <a href="tel:+919643968546" class="btn-pkg-secondary">Call Karo</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="section-inner">
+    <div class="gallery-header reveal">
+      <span class="section-tag gold">Real Dawaatein</span>
+      <h2 class="section-title">Yahi Toh Hoti Hai <em>Asli Dawaat</em></h2>
+      <p style="color:rgba(250,245,236,0.6);font-size:15px;margin-top:8px;">Follow us on Instagram <strong style="color:var(--gold);">@TheBuffetBhai</strong> for behind-the-scenes, new dishes & daawat inspo.</p>
+    </div>
+    <div class="gallery-grid reveal">
+      <div class="gallery-item">
+        <div class="gallery-placeholder">
+          <span class="gp-icon">🍛</span>
+          <span>Dal Makhani & Paneer Spread</span>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder">
+          <span class="gp-icon">🔥</span>
+          <span>Seekh Kebab on the Grill</span>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder">
+          <span class="gp-icon">🍚</span>
+          <span>Dum Biryani — Layered to Perfection</span>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder">
+          <span class="gp-icon">🎉</span>
+          <span>Birthday Dawaat Setup — 60 Guests, Noida</span>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder">
+          <span class="gp-icon">🍮</span>
+          <span>Phirni & Gulab Jamun Dessert Counter</span>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder">
+          <span class="gp-icon">✨</span>
+          <span>Full Buffet Lineup — Dilli Wali Dawaat</span>
+        </div>
+      </div>
+    </div>
+    <div class="gallery-cta reveal">
+      <a href="https://www.instagram.com/thebuffetbhai?igsh=ZXVrdWxpbHFnMGV6&utm_source=qr" target="_blank" class="btn-secondary" style="display:inline-flex;align-items:center;gap:8px;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+        Follow on Instagram
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <div class="section-inner">
+    <div class="why-header reveal">
+      <span class="section-tag" style="color:var(--burgundy);">Bharosa</span>
+      <h2 class="section-title dark-text">15,000+ Families Ne <em>Trust Kiya.</em> Aap Kyun Nahi?</h2>
+    </div>
+    <div class="trust-grid">
+      <div class="trust-card reveal reveal-delay-1">
+        <div class="trust-icon">🏆</div>
+        <h3>Delhi NCR ka Bharosa</h3>
+        <p>Delivering unforgettable dawaats across Delhi, Gurugram, Noida, and all of NCR since 2026.</p>
+      </div>
+      <div class="trust-card reveal reveal-delay-2">
+        <div class="trust-icon">⏱️</div>
+        <h3>On-Time, Every Time</h3>
+        <p>Your food arrives hot before your first guest. Guaranteed. No excuses, no delays.</p>
+      </div>
+      <div class="trust-card reveal reveal-delay-3">
+        <div class="trust-icon">🌶️</div>
+        <h3>Asli Dilli Swad</h3>
+        <p>Recipes perfected over years. Ghee ka tadka included. The taste your guests will talk about.</p>
+      </div>
+      <div class="trust-card reveal reveal-delay-1">
+        <div class="trust-icon">💸</div>
+        <h3>Jo Dikhta Hai, Wohi Milta Hai</h3>
+        <p>No hidden charges. Full transparency from quote to delivery. Jo bola, wohi milega.</p>
+      </div>
+      <div class="trust-card reveal reveal-delay-2">
+        <div class="trust-icon">🎁</div>
+        <h3>Sab Kuch Shaamil</h3>
+        <p>Disposables, containers, cutlery — nothing extra to arrange. We bring the whole setup.</p>
+      </div>
+      <div class="trust-card reveal reveal-delay-3">
+        <div class="trust-icon">📱</div>
+        <h3>WhatsApp Pe Seedha</h3>
+        <p>Order, track, inquire — all on WhatsApp. No app downloads. No complicated process.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="section-inner">
+    <div class="how-header reveal">
+      <span class="section-tag">Process</span>
+      <h2 class="section-title">Teen Steps. <em>Ek Kamaal Dawaat.</em></h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal reveal-delay-1">
+        <div class="step-num">1</div>
+        <h3>Bhai Ko Batao</h3>
+        <p>Tell us your guest count, date, and whether you want veg or non-veg. Takes 2 minutes on WhatsApp.</p>
+      </div>
+      <div class="step reveal reveal-delay-2">
+        <div class="step-num">2</div>
+        <h3>Menu Pakka Karo</h3>
+        <p>We send you a customized menu + quote within 1 hour. Confirm with 50% advance. Done.</p>
+      </div>
+      <div class="step reveal reveal-delay-3">
+        <div class="step-num">3</div>
+        <h3>Host Bano, Relax Karo</h3>
+        <p>We deliver piping hot food. You greet guests, take compliments, and enjoy the party. Bas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="reviews">
+  <div class="section-inner">
+    <div class="reviews-header reveal">
+      <span class="section-tag" style="color:var(--burgundy);">Reviews</span>
+      <h2 class="section-title dark-text">Log Kuch <em>Yun Kehte Hain</em></h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal reveal-delay-1">
+        <div class="stars">★★★★★</div>
+        <div class="test-quote">"</div>
+        <p class="test-text">Bete ki birthday pe 40 log aaye. Buffet Bhai ne poora setup bhi karwa diya, khana toh lajawab tha. Mummy ne pucha kaun sa restaurant tha!</p>
+        <div class="test-author">Ritu Aggarwal</div>
+        <div class="test-location">Dwarka, Delhi</div>
+      </div>
+      
+      <div class="testimonial-card reveal reveal-delay-2">
+        <div class="stars">★★★★★</div>
+        <div class="test-quote">"</div>
+        <p class="test-text">Office farewell tha, 60 log. Finger foods se leke biryani tak sab kuch perfect. Delivery bhi time pe. Recommend karna toh banega hi.</p>
+        <div class="test-author">Siddharth Kapoor</div>
+        <div class="test-location">Gurugram</div>
+      </div>
+      
+      <div class="testimonial-card reveal reveal-delay-3">
+        <div class="stars">★★★★★</div>
+        <div class="test-quote">"</div>
+        <p class="test-text">Puja ke liye no-onion-garlic package liya. Halwa, kheer, paneer, dal — sab saatvik aur delicious. Panditji bhi impressed ho gaye!</p>
+        <div class="test-author">Savita Nair</div>
+        <div class="test-location">Noida Sector 50</div>
+      </div>
+      
+      <div class="testimonial-card reveal reveal-delay-1">
+        <div class="stars">★★★★★</div>
+        <div class="test-quote">"</div>
+        <p class="test-text">Meri anniversary ka surprise plan kiya tha. Buffet Bhai ne itna perfect khana diya, biwi khush, sas khush, main khush.</p>
+        <div class="test-author">Rahul Mehta</div>
+        <div class="test-location">Greater Noida</div>
+      </div>
+      
+      <div class="testimonial-card reveal reveal-delay-2">
+        <div class="stars">★★★★★</div>
+        <div class="test-quote">"</div>
+        <p class="test-text">Tried 3 caterers before finding these guys. Koi mukaabla nahi. Taste, quantity, packaging — sab best. Will order every time!</p>
+        <div class="test-author">Tanvi Suri</div>
+        <div class="test-location">Vasant Kunj, Delhi</div>
+      </div>
+    </div>
+    
+    <div class="google-badge reveal">
+      <div class="grating">4.8</div>
+      <div class="ginfo">
+        <div class="gstars">★★★★★</div>
+        <div style="font-size:13px;font-weight:600;margin-top:4px;">8,000+ Google Reviews</div>
+        <div class="gcount">See all reviews on Google Maps</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-inner">
+    <div class="faq-header reveal">
+      <span class="section-tag">Help</span>
+      <h2 class="section-title">Mann Mein Kuch <em>Sawal Hain?</em></h2>
+    </div>
+    <div class="faq-grid reveal">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Minimum kitne log ke liye order karte ho?
+          <span class="faq-arrow">+</span>
+        </div>
+        <div class="faq-a">Minimum 10 guests. Maximum? Aapko jo bhi bhaaye — we've served 100+ at home events.</div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Kya menu customize ho sakta hai?
+          <span class="faq-arrow">+</span>
+        </div>
+        <div class="faq-a">Bilkul. Veg, non-veg, saatvik, jain, no-onion-garlic — sab possible. Batao, hum bana dete hain.</div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Kitne advance mein book karna hota hai?
+          <span class="faq-arrow">+</span>
+        </div>
+        <div class="faq-a">24 hours advance preferred, but same-day orders bhi possible hain (subject to availability). WhatsApp kar lo.</div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Delivery charges alag lagenge?
+          <span class="faq-arrow">+</span>
+        </div>
+        <div class="faq-a">Delivery location ke hisaab se quote mein clear bataya jaata hai. Koi hidden charges nahi.</div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Khana garma garma aayega?
+          <span class="faq-arrow">+</span>
+        </div>
+        <div class="faq-a">Haan. Heat-retentive premium packaging use karte hain. Food arrives oven-fresh, guaranteed.</div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Plates, spoons, napkins included hain?
+          <span class="faq-arrow">+</span>
+        </div>
+        <div class="faq-a">Yes. Premium eco-friendly disposables all packages mein included hain. Kuch alag nahi mangwaana hoga.</div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Tasting possible hai?
+          <span class="faq-arrow">+</span>
+        </div>
+        <div class="faq-a">Haan! Sample thali order kar sakte ho ya hame WhatsApp kar ke arrange kar sakte ho. Pehle taste karo, phir decide karo.</div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Kitna advance dena hota hai booking ke liye?
+          <span class="faq-arrow">+</span>
+        </div>
+        <div class="faq-a">50% advance at booking, rest on delivery. UPI, bank transfer, cash — sab accepted. No drama.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA / CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="cta-inner">
+      <div class="cta-left reveal">
+        <span class="section-tag" style="color:var(--burgundy);">Last Call</span>
+        <h2>Is Weekend Ki <em>Dawaat Confirm Kar Lo</em></h2>
+        <p>Slots fill up fast, especially on weekends. Ek WhatsApp message bhejo — hum baaki sambhal lete hain.</p>
+        
+        <div class="cta-buttons">
+          <a href="https://wa.me/919643968546?text=Hi%20Buffet%20Bhai!%20I%20want%20to%20book%20catering." class="btn-wa" target="_blank">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            Bhai Ko Bulao
+          </a>
+          <a href="tel:+919643968546" class="btn-call">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.4 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"></path></svg>
+            Call: +91 96439 68546
+          </a>
+        </div>
+        
+        <div class="areas-served" style="margin-top:28px;">
+          <span style="font-size:13px;font-weight:600;color:#888;width:100%;margin-bottom:4px;">We Serve:</span>
+          <span class="area-tag">Delhi</span>
+          <span class="area-tag">Gurugram</span>
+          <span class="area-tag">Noida</span>
+          <span class="area-tag">Greater Noida</span>
+          <span class="area-tag">Ghaziabad</span>
+          <span class="area-tag">Faridabad</span>
+        </div>
+      </div>
+      
+      <div class="reveal reveal-delay-2">
+        <div class="inquiry-form">
+          <h3>Quick Inquiry Bhejo</h3>
+          <div id="formBody">
+            <div class="form-row">
+              <div class="form-field">
+                <label>Your Name</label>
+                <input type="text" placeholder="Aapka naam" id="fname">
+              </div>
+              <div class="form-field">
+                <label>Phone Number</label>
+                <input type="tel" placeholder="+91 XXXXX XXXXX" id="fphone">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-field">
+                <label>Guest Count</label>
+                <input type="number" placeholder="25" id="fguests">
+              </div>
+              <div class="form-field">
+                <label>Event Date</label>
+                <input type="date" id="fdate">
+              </div>
+            </div>
+            <div class="form-field">
+              <label>Menu Preference</label>
+              <select id="fmenu">
+                <option value="">Select preference</option>
+                <option>Pure Veg</option>
+                <option>Non-Veg</option>
+                <option>Mixed (Veg + Non-Veg)</option>
+                <option>Saatvik (No Onion/Garlic)</option>
+                <option>Not Sure — Suggest me!</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label>Message (Optional)</label>
+              <textarea placeholder="Occasion, special requests, kuch bhi..." id="fmsg"></textarea>
+            </div>
+            <button class="submit-btn" onclick="submitForm()">Inquiry Bhejo 🚀</button>
+          </div>
+          <div class="form-success" id="formSuccess">
+            <div class="check">✅</div>
+            <h4>Shukriya! Inquiry Mil Gayi!</h4>
+            <p>Hum 1 ghante mein WhatsApp ya call karenge. Aap relax karo — daawat hum sambhalenge.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">The Buffet <span>Bhai</span></div>
+        <div class="footer-tagline">Apka Buffet, Apki Shaan.</div>
+        <p>Delhi NCR's most premium home buffet catering service. Ghar pe dawaat ka scene? Chhod do hamare pe.</p>
+        <div class="social-icons" style="margin-top:20px;">
+          <a href="https://www.instagram.com/thebuffetbhai?igsh=ZXVrdWxpbHFnMGV6&utm_source=qr" target="_blank" class="social-icon" title="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="https://wa.me/919643968546" target="_blank" class="social-icon" title="WhatsApp">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          </a>
+        </div>
+      </div>
+      
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#packages">Our Packages</a></li>
+          <li><a href="#how">How It Works</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Book Now</a></li>
+        </ul>
+      </div>
+      
+      <div>
+        <h4>We Serve</h4>
+        <ul>
+          <li><a href="#">Delhi</a></li>
+          <li><a href="#">Gurugram</a></li>
+          <li><a href="#">Noida</a></li>
+          <li><a href="#">Greater Noida</a></li>
+          <li><a href="#">Ghaziabad</a></li>
+          <li><a href="#">Faridabad</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-contact">
+        <h4>Baat Karo</h4>
+        <p>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.4 1.18 2 2 0 012 0h3a2 2 0 012 1.72.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"></path></svg>
+          <a href="tel:+919643968546">+91 96439 68546</a>
+        </p>
+        <p>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"></path></svg>
+          <a href="https://wa.me/919643968546" target="_blank">WhatsApp Us</a>
+        </p>
+        <p>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/></svg>
+          <a href="https://www.instagram.com/thebuffetbhai?igsh=ZXVrdWxpbHFnMGV6&utm_source=qr" target="_blank">@thebuffetbhai</a>
+        </p>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <span>© 2026 The Buffet Bhai. Sab rights reserved. 🍛</span>
+      <span>Made with ❤️ in Delhi NCR | <a href="#">Privacy Policy</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/919643968546?text=Hi%20Buffet%20Bhai!%20I%20want%20to%20book%20catering." class="wa-fab" target="_blank" title="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+  </svg>
+</a>
+
+<!-- MOBILE STICKY BAR -->
+<div class="mobile-sticky-bar">
+  <a href="tel:+919643968546" class="msb-order">📞 Call Karo</a>
+  <a href="https://wa.me/919643968546?text=Hi%20Buffet%20Bhai!%20I%20want%20to%20book%20catering." class="msb-wa" target="_blank">Bhai Ko Bulao 🤙</a>
+</div>
+
+<script>
+// NAV SCROLL
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// HAMBURGER
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+const closeMenu = document.getElementById('closeMenu');
+hamburger.addEventListener('click', () => mobileMenu.classList.add('active'));
+closeMenu.addEventListener('click', () => mobileMenu.classList.remove('active'));
+function closeMobileMenu() { mobileMenu.classList.remove('active'); }
+
+// TABS
+function switchTab(tab) {
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + tab).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// FAQ ACCORDION
+function toggleFaq(el) {
+  const item = el.parentElement;
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+// FORM SUBMIT
+function submitForm() {
+  const name = document.getElementById('fname').value.trim();
+  const phone = document.getElementById('fphone').value.trim();
+  if (!name || !phone) {
+    alert('Naam aur phone number toh dena padega bhai! 😄');
+    return;
+  }
+  document.getElementById('formBody').style.display = 'none';
+  document.getElementById('formSuccess').style.display = 'block';
+}
+
+// SCROLL REVEAL
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// SMOOTH ANCHOR SCROLL
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const href = a.getAttribute('href');
+    if (href === '#') return;
+    e.preventDefault();
+    const target = document.querySelector(href);
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+</body>
+</html>
